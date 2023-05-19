@@ -3,6 +3,7 @@ package Tests;
 import Pages.MainPage;
 import Pages.TermOrderPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 @RunWith(Parameterized.class)
 public class TestOrderPage {
+    private WebDriver driver;
     private final String name;
     private final String serName;
     private final String adres;
@@ -87,6 +89,10 @@ public class TestOrderPage {
         //ищем что модалка с номером заказа появилась
         Assert.assertTrue(driver.findElement(By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Посмотреть статус']")).isDisplayed());
 
+
+    }
+    @After
+    public void tearDown(){
         driver.quit();
     }
 
