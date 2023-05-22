@@ -1,6 +1,7 @@
 package Pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -18,11 +19,18 @@ public class MainPage {
 
     private By buttonOrder = By.xpath("//button[@class='Button_Button__ra12g']");
 
+    private By messageMenu = By.className("Home_FourPart__1uthg");
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
     public void clickButtonOrder(){
         driver.findElement(buttonOrder).click();
+    }
+
+    public void scroll(){
+        WebElement element = driver.findElement(messageMenu);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public void getAssertMessage(){
@@ -44,6 +52,7 @@ public class MainPage {
             lists.get(i).click();
             String text = listMessages.get(i).getText();
             Assert.assertEquals(text, message[i]);
+
         }
     }
 
