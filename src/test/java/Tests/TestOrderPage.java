@@ -9,8 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-
-
+import java.util.concurrent.TimeUnit;
 
 
 public class TestOrderPage {
@@ -71,6 +70,25 @@ public class TestOrderPage {
         objOrderTwo.assertModalWindow();
 
         driver.quit();
+    }
+
+    @Test
+    public void assertAllertMessage(){
+        //WebDriver driver = new ChromeDriver();
+        WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.get("https://qa-scooter.praktikum-services.ru");
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        MainPage objMainPage = new MainPage(driver);
+        objMainPage.clickButtonOrder();
+
+        TermOrderPage objAllertMessage = new TermOrderPage(driver);
+        objAllertMessage.clickButtonNext();
+
+        objAllertMessage.allertMessages();
+        driver.quit();
+
     }
 
 }

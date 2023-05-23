@@ -58,6 +58,19 @@ public class TermOrderPage {
     //локатор для модалки с номером заказа
     private final By modalOrderNumber = By.xpath("//div[@class='Order_Modal__YZ-d3']");
 
+    //локатор для allerta поля имя
+    private By alletMessageName = By.xpath("//div[@class='Input_ErrorMessage__3HvIb Input_Visible___syz6' and text()='Введите корректное имя']");
+
+    //локатор для allerta поля фамилия
+    private By allertMessageSername = By.xpath("//div[@class='Input_ErrorMessage__3HvIb Input_Visible___syz6' and text()='Введите корректную фамилию']");
+
+    //локатор для allerta поля станция метро
+    private By allertMessageStation = By.xpath("//div[@class='Order_MetroError__1BtZb' and text()='Выберите станцию']");
+
+    //локатор для allerta поля телефон
+    private By alertMessagePhoneNumber = By.xpath("//div[@class='Input_ErrorMessage__3HvIb Input_Visible___syz6' and text()='Введите корректный номер']");
+
+
 
     public TermOrderPage(WebDriver driver) {
         this.driver = driver;
@@ -186,6 +199,17 @@ public class TermOrderPage {
 
     public void assertModalWindow() {
         Assert.assertTrue(driver.findElement(modalOrderNumber).isDisplayed());
+    }
+
+    public void allertMessages(){
+        Assert.assertTrue(driver.findElement(alletMessageName).isDisplayed());
+        Assert.assertTrue(driver.findElement(allertMessageSername).isDisplayed());
+        Assert.assertTrue(driver.findElement(allertMessageStation).isDisplayed());
+        Assert.assertTrue(driver.findElement(alertMessagePhoneNumber).isDisplayed());
+
+
+
+
     }
 
 
