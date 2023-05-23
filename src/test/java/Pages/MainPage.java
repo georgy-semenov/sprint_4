@@ -19,7 +19,11 @@ public class MainPage {
 
     private By buttonOrder = By.xpath("//button[@class='Button_Button__ra12g']");
 
+    //локатор для кнопки заказать
     private By messageMenu = By.className("Home_FourPart__1uthg");
+
+    //локатор для хэдера самокат
+    private By headerSamokat = By.className("Header_LogoScooter__3lsAR");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -55,5 +59,21 @@ public class MainPage {
 
         }
     }
+
+    //метод для нажатия на Лого самокат
+    public void clickLogoHeader(){
+        driver.findElement(headerSamokat).click();
+    }
+
+    //метод для получения url страницы и сравнения ее
+    public void getUrlAndAssert(){
+        String url = "https://qa-scooter.praktikum-services.ru/";
+        String newUrl = driver.getCurrentUrl();
+        Assert.assertEquals(url, newUrl);
+    }
+
+
+
+
 
 }

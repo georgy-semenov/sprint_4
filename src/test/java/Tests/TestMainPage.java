@@ -36,4 +36,20 @@ public class TestMainPage {
         driver.quit();
     }
 
+    @Test
+    public void assertUrl(){
+        WebDriver driver = new ChromeDriver();
+        //WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.get("https://qa-scooter.praktikum-services.ru");
+
+        MainPage objGetAndAssertUrl = new MainPage(driver);
+
+        objGetAndAssertUrl.clickButtonOrder();
+        objGetAndAssertUrl.clickLogoHeader();
+        objGetAndAssertUrl.getUrlAndAssert();
+        driver.quit();
+
+    }
 }
